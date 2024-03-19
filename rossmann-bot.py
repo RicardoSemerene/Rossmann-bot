@@ -18,8 +18,8 @@ TOKEN = os.environ.get('TOKEN')
 #https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/sendMessage?chat_id=1040356519&text=Hi Ricardo, I am doing good, tks!
 #
 def send_message( chat_id, text ):
-    url = f'https://api.telegram.org/bot{TOKEN}/'
-    url = url + f"sendMessage?chat_id={chat_id}" 
+    url = 'https://api.telegram.org/bot{}/'.format( TOKEN ) 
+    url = url + 'sendMessage?chat_id={}'.format( chat_id )
 
     r = requests.post( url, json={'text': text } )
     print( 'Status Code {}'.format( r.status_code ) )
@@ -123,5 +123,5 @@ def index():
 
 
 if __name__ == '__main__':
-    port = os.environ.get( 'PORT', 5000 )
+    port = os.environ.get( 'PORT', 10000 )
     app.run( host='0.0.0.0', port=port )
