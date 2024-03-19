@@ -6,7 +6,7 @@ import pandas as pd
 from flask import Flask, request, Response
 
 # constants
-TOKEN = '7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ'
+TOKEN = os.environ.get('TOKEN')
 
 ## Info about the Bot
 #https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/getMe
@@ -18,8 +18,8 @@ TOKEN = '7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ'
 #https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/sendMessage?chat_id=1040356519&text=Hi Ricardo, I am doing good, tks!
 #
 def send_message( chat_id, text ):
-    url = 'https://api.telegram.org/bot{}/'.format( TOKEN ) 
-    url = url + 'sendMessage?chat_id={}'.format( chat_id ) 
+    url = f'https://api.telegram.org/bot{TOKEN}/'
+    url = url + f"sendMessage?chat_id={chat_id}" 
 
     r = requests.post( url, json={'text': text } )
     print( 'Status Code {}'.format( r.status_code ) )
@@ -52,7 +52,6 @@ def load_dataset( store_id ):
 
     return data
 
-
 def predict( data ):
     # API Call
     url = 'https://rossmann-model-test-wogg.onrender.com/rossmann/predict'
@@ -65,7 +64,6 @@ def predict( data ):
     d1 = pd.DataFrame( r.json(), columns=r.json()[0].keys() )
 
     return d1
-
 
 def parse_message( message ):
     chat_id = message['message']['chat']['id']
