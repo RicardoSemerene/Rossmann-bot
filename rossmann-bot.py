@@ -14,6 +14,8 @@ TOKEN = os.environ.get('TOKEN')
 ## get updates
 #https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/getUpdates
 
+#https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/setWebhook?url=https://3e0a6877edb187.lhr.life
+
 ## send message
 #https://api.telegram.org/bot7007773057:AAHoMXmjBpiARk9Lvj0aG9qw14Vd13iabHQ/sendMessage?chat_id=1040356519&text=Hi Ricardo, I am doing good, tks!
 #
@@ -123,5 +125,5 @@ def index():
 
 
 if __name__ == '__main__':
-    port = os.environ.get( 'PORT', 10000 )
+    port = os.environ.get( 'PORT', 5000 )
     app.run( host='0.0.0.0', port=port )
